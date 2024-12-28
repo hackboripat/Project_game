@@ -9,7 +9,7 @@ body {
 
 .container {
   width: 1000px;
-  height: 600px;
+  height: 670px;
   background-color: #504848;
   margin: 116px auto 0px auto;
   border-radius: 10px;
@@ -27,7 +27,7 @@ body {
 }
 .container .component_win {
   width: 500px;
-  height: 380px;
+  height: 450px;
   display: inline-block;
   background-color: #FFF2CD;
   margin: 0;
@@ -52,10 +52,14 @@ body {
   height: 40px;
   border: 1px solid #000;
   background-color: #BF8F00;
+  font-size: 20px;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .container .component_lose {
   width: 500px;
-  height: 380px;
+  height: 450px;
   display: inline-block;
   background-color: #DCDADB;
   margin: 0;
@@ -80,6 +84,10 @@ body {
   height: 40px;
   border: 1px solid #000;
   background-color: #808080;
+  font-size: 20px;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .container .footer {
   width: 1000px;
@@ -93,6 +101,11 @@ body {
   font-size: 36px;
   color: #FFF;
   background-color: #B47452;
+}
+.container .footer .button-event {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

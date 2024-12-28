@@ -1,73 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>game</title>
+    <title>game 1</title>
 </head>
+
 <body>
-    
 
-    <div class="container">
-        <div class="header">
-            <p>ผลเกมที่ 1</p>
-        </div>
+    <form action="game2.php" method="post">
+    <?php include_once 'component/form.php'; ?>
 
-        <div class="row">
-            <div class="component_win">
-                <p class="title">ผู้ชนะ</p>
 
-                <table>
+    <script>
 
-                    <tr>
-                        <td width="200px"><label for="">รหัสทีม</label></td>
-                        <td><input type="text" id="" name="" required></td>
-                    </tr>
+        document.getElementById('text_header_').innerHTML = 'ผลเกมที่ 1'
 
-                    <tr>
-                        <td width="200px"><label for="">ชื่อโรงเรียน</label></td>
-                        <td><input type="text" id="" name="" required></td>
-                    </tr>
 
-                    <tr>
-                        <td width="200px"><label for="">คะแนนที่ได้</label></td>
-                        <td><input type="number" id="" name="" required></td>
-                    </tr>
+        var team_code = [];
+        var name_surname = [];
+        var school = [];
 
-                </table>
-            </div>
+        <?php
+            require 'vendor/autoload.php';
 
-            <div class="component_lose">
-                <p class="title">ผู้แพ้</p>
+            use PhpOffice\PhpSpreadsheet\Spreadsheet;
+            use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-                <table>
+            include_once 'functions/config_file.php';
+            
+            $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+            $reader->setLoadSheetsOnly($sheetname);
+            $spreadsheet = $reader->load($inputFileName);
 
-                    <tr>
-                        <td width="200px"><label for="">รหัสทีม</label></td>
-                        <td><input type="text" id="" name="" required></td>
-                    </tr>
+            if(($_SERVER['REQUEST_METHOD'] == 'POST')){
 
-                    <tr>
-                        <td width="200px"><label for="">ชื่อโรงเรียน</label></td>
-                        <td><input type="text" id="" name="" required></td>
-                    </tr>
+                    
+                include_once 'functions/variable.php';
+                
+                $spreadsheet->getActiveSheet()->setCellValue("AO$win_cell_column", $win_score);
+                $spreadsheet->getActiveSheet()->setCellValue("AP$win_cell_column", $lose_score);
+                $spreadsheet->getActiveSheet()->setCellValue("AO$lose_cell_column", $lose_score);
+                $spreadsheet->getActiveSheet()->setCellValue("AP$lose_cell_column", $win_score);
 
-                    <tr>
-                        <td width="200px"><label for="">คะแนนที่ได้</label></td>
-                        <td><input type="number" id="" name="" required></td>
-                    </tr>
+                
+                // $result = $spreadsheet->getActiveSheet()->getCell('C2')->getCalculatedValue();
+                // $writer->save('demo.xlsx');
+                // echo "<p>ผลลัพธ์การคำนวณ: $result </p>";
 
-                </table>
-            </div>
-        </div>
+                $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, "Xlsx");
+                $writer->save($inputFileName);
 
-        <div class="footer">
-            <button class="btn confirm">ตกลง</button>
-            <button class="btn repeat">ทำซ้ำ</button>
-        </div>
-    </div>
+            }
+        ?>
+
+        <?php include_once 'functions/getlist_data.php'; ?>
+        <?php include_once 'functions/event_listener.php'; ?>
+
+        // document.getElementById('ttt').innerHTML = name_surname[0] + name_surname[1]
+        
+
+    </script>
 </body>
+
 </html>

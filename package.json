@@ -4,13 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css": "node-sass --watch styles/style.scss -o style.css",
-    "css:watch": "npm run css && node-sass styles/style.scss -wo style.css"
+    "css": "sass --watch style/style.scss style.css"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "node-sass": "^9.0.0"
+  },
+  "dependencies": {
+    "game": "file:"
   }
 }
