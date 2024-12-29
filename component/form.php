@@ -74,9 +74,9 @@
                 <button type="submit" class="btn confirm" tabindex="7">ตกลง</button>
             </div>
 
-            <div class="button-event">
+            <!-- <div class="button-event">
                 <button type="button" class="btn repeat" tabindex="8" onClick="window.location.reload();">ทำซ้ำ</button>
-            </div>
+            </div> -->
         </div>
     </form>
 </div>
